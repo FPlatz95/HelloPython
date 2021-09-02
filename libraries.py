@@ -37,6 +37,7 @@ if len(sys.argv) < 3:
 
 directory1 = sys.argv[1]
 directory2 = sys.argv[2]
+
 """
 for directory in [directory1, directory2]:
     if not os.access(directory, os.F_OK):
@@ -47,6 +48,7 @@ for directory in [directory1, directory2]:
         print(item)
     print()
 """
+
 dir1_file_list, dir1_root = directory_listing(directory1)
 dir2_file_list, dir2_root = directory_listing(directory2)
 
