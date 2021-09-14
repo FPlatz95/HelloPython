@@ -15,15 +15,22 @@ def get_stock_html(ticker_name):
 
     url = "http://finance.yahoo.com/q?s=" + ticker_name 
     response = opener.open(url) 
-    return ''.join(response.readlines())
+    return response.read()
+    #return ''.join(response.readlines())
 
 def find_quote_section(html):
-    soup = BeautifulSoup(html)
+    soup = BeautifulSoup(html, features="html.parser")
     quote = soup.find('div', 
-                attrs = {'class': 'yfi_quote_summary'})
+                attrs = {'id': 'quote-summary'})
     return quote 
+
+def parse_stock_html(quote):
+    result = {}
+    tick = ticker_name.lower()
+
 
 if __name__ == '__main__': 
     html = get_stock_html('GOOG')
-    print(html)
+    quote = find_quote_section(html)
+    print(quote)
 
